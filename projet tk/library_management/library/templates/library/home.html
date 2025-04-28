@@ -1,0 +1,73 @@
+{% extends 'library/base.html' %}
+
+{% block title %}Home - Library Management{% endblock %}
+
+{% block content %}
+<h1 class="text-center mb-4">Welcome to the Library Management System</h1>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-primary text-white">Books</div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Quantity</th>
+                            <th>ISBN</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for livre in livres %}
+                        <tr>
+                            <td>{{ livre.id }}</td>
+                            <td>{{ livre.titre }}</td>
+                            <td>{{ livre.auteur }}</td>
+                            <td>{{ livre.quantite }}</td>
+                            <td>{{ livre.isbn }}</td>
+                            <td>
+                                <a href="{% url 'modify_livre' livre.id %}" class="btn btn-warning btn-sm">Modify</a>
+                                <a href="{% url 'delete_livre' livre.id %}" class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-success text-white">Members</div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Contact</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for membre in membres %}
+                        <tr>
+                            <td>{{ membre.id }}</td>
+                            <td>{{ membre.nom }} {{ membre.prenom }}</td>
+                            <td>{{ membre.contact }}</td>
+                            <td>
+                                <a href="{% url 'modify_member' membre.id %}" class="btn btn-warning btn-sm">Modify</a>
+                                <a href="{% url 'delete_member' membre.id %}" class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

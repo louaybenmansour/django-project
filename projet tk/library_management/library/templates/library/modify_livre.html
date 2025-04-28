@@ -1,0 +1,27 @@
+{% extends 'library/base.html' %}
+
+{% block title %}Modify Book - Library Management{% endblock %}
+
+{% block content %}
+<h1 class="text-center mb-4">Modify Book</h1>
+<form method="post" class="p-4 border rounded bg-light">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="titre" class="form-label">Title</label>
+        <input type="text" class="form-control" id="titre" name="titre" value="{{ livre.titre }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="auteur" class="form-label">Author</label>
+        <input type="text" class="form-control" id="auteur" name="auteur" value="{{ livre.auteur }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="quantite" class="form-label">Quantity</label>
+        <input type="number" class="form-control" id="quantite" name="quantite" value="{{ livre.quantite }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="isbn" class="form-label">ISBN</label>
+        <input type="text" class="form-control" id="isbn" name="isbn" value="{{ livre.isbn }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Save Changes</button>
+</form>
+{% endblock %}

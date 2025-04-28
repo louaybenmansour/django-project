@@ -1,0 +1,23 @@
+{% extends 'library/base.html' %}
+
+{% block title %}Modify Member - Library Management{% endblock %}
+
+{% block content %}
+<h1 class="text-center mb-4">Modify Member</h1>
+<form method="post" class="p-4 border rounded bg-light">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="first_name" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="first_name" name="first_name" value="{{ membre.nom }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="last_name" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="last_name" name="last_name" value="{{ membre.prenom }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="contact" class="form-label">Contact</label>
+        <input type="text" class="form-control" id="contact" name="contact" value="{{ membre.contact }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Save Changes</button>
+</form>
+{% endblock %}
